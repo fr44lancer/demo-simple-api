@@ -1,4 +1,4 @@
-# 🇦🇲 Public Registry API producer/consumer Demo App
+# Public Registry API producer/consumer Demo App
 
 A  demo app for simulating a public registry platform using  mock data. Features include producing and consuming REST APIs for persons, addresses, and 
 
