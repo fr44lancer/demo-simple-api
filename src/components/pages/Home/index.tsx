@@ -171,8 +171,8 @@ export default function HomePage() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <Card title="📡 API Producer" bordered className="shadow-md">
                         <p>Create mock people, addresses, and documents to simulate registry APIs.</p>
-                        <Link href="/person">
-                            <Button type="primary" className="mt-4">Manage Persons</Button>
+                        <Link href="/producer">
+                            <Button type="primary" className="mt-4">Browse producer app</Button>
                         </Link>
                     </Card>
 
