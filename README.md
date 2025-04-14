@@ -1,104 +1,91 @@
-# Armenian Data Management System
+# 🇦🇲 Public Registry API producer/consumer Demo App
 
-A comprehensive data management system for Armenian citizen data, featuring an admin panel with CRUD operations and a public API interface.
+A  demo app for simulating a public registry platform using  mock data. Features include producing and consuming REST APIs for persons, addresses, and 
 
-## Features
+## 🚀 Quick Start
 
-- **User-Friendly Admin Panel**: Manage person records, addresses, and documents
-- **Armenian-Specific Data Model**: Supports fields relevant to Armenian citizens including patronymic names, passport details, and more
-- **REST API for External Use**: Public API endpoints for integration with other systems
-- **Producer/Consumer Architecture**: Separate interfaces for data management and data consumption
-- **Responsive UI**: Works on desktop, tablet, and mobile devices
+### 1. Clone & Install
+```bash
+git clone https://github.com/fr44lancer/demo-simple-api.git
+cd demo-simple-api
+npm install
+```
 
-## Technology Stack
+### 2. Environment Setup
+Copy example env and configure your MySQL DB:
+```bash
+cp .env.example .env.local
+```
 
-- **Frontend**: React with TypeScript, Tailwind CSS, Shadcn UI components
-- **Backend**: Express.js (Node.js)
-- **Database**: PostgreSQL with Drizzle ORM
-- **API**: RESTful API with pagination, filtering, and sorting
+Update `.env.local`:
+```
+DATABASE_URL="mysql://user:pass@localhost:3306/dbname"
+```
 
-## Screenshots
+### 3. App setup (migrations etc.)
+```bash
+npm run setup
+```
 
-### Admin Panel (Producer Interface)
-![Admin Panel - Person Management]
-The admin panel provides a clean interface for managing person records with comprehensive filtering options.
+### 4. Start the Dev Server
+```bash
+npm run dev
+```
 
-### API Consumer Interface
-![API Consumer Interface]
-The API consumer interface allows for easy testing and integration with the system's API endpoints.
+### 5. Generate Mock Data (Optional)
+Use the **Generate Mock Data** button in the UI to populate test records.
 
-### Data Entry Form
-![Data Entry Form]
-Customized forms for Armenian data with specialized fields for passports, certificates, and personal information.
+---
 
-## Installation
+## 📂 Project Structure
 
-### Prerequisites
-- Node.js (v18 or newer)
-- PostgreSQL (v14 or newer)
-- npm or yarn package manager
+```
+├── app
+│   ├── person            # Person CRUD UI
+│   ├── address           # Address UI
+│   ├── document          # Document UI
+│   ├── api
+│   │   ├── person        # REST API routes
+│   │   ├── v1            # Public-facing endpoints
+│   │   └── dev/generate-mock-data
+│   └── layout.tsx       # Root layout with Sidebar
+├── components            # Reusable UI elements
+├── lib                   # Prisma client wrapper
+├── prisma
+│   └── schema.prisma    # Data models
+└── types                 # Shared TypeScript types
+```
 
-### Setup Instructions
+---
 
-1. **Clone the Repository**
-   ```bash
-   git clone https://github.com/yourusername/armenian-data-management.git
-   cd armenian-data-management
-   ```
+## 📡 API Endpoints
 
-2. **Install Dependencies**
-   ```bash
-   npm install
-   ```
+### `/api/v1/persons`
+Returns full person list with address + documents.
 
-3. **Configure Environment**
-   Create a `.env` file in the root directory with the following variables:
-   ```
-   DATABASE_URL=postgresql://username:password@localhost:5432/armenian_data_db
-   ```
-   (Replace with your own PostgreSQL credentials)
+### `/api/v1/persons-by-pnum?pnum=xxxx`
+Query people by PNUM.
 
-4. **Initialize Database**
-   ```bash
-   npm run db:push
-   ```
+### `/api/v1/addresses`
+Returns list of all addresses.
 
-5. **Seed the Database (Optional)**
-   ```bash
-   npm run seed
-   ```
+---
 
-6. **Start the Application**
-   ```bash
-   npm run dev
-   ```
+## 🛠 Scripts
 
-7. **Access the Application**
-   Open your browser and navigate to:
-   - Admin Panel: http://localhost:5000
-   - API Documentation: http://localhost:5000/documentation
+```bash
+npm run dev          # Start dev server
+npm run build        # Build for production
+npx prisma studio    # View/edit DB in browser
+```
 
-## API Endpoints
+---
 
-### Producer API (External)
+## 📃 License
+MIT — use this for demos, education, and internal testing.
 
-- `GET /api/producer/v1/persons` - Get a list of persons with pagination and filtering
+---
 
-Query parameters:
-- `page` - Page number (default: 1)
-- `limit` - Items per page (default: 10)
-- `search` - Search by name (first name, last name, patronymic)
-- `genus` - Filter by genus ("male" or "female")
-- `isDead` - Filter by living status (true/false)
-- `sortBy` - Field to sort by (e.g., "firstName", "lastName")
-- `sortOrder` - Sort order ("asc" or "desc")
+## 🤝 Contributing
+Pull requests welcome. Please open issues for bugs, suggestions, or docs.
 
-### Admin API (Internal)
-
-Comprehensive CRUD operations for the following resources:
-- `/api/persons` - Person management
-- `/api/addresses` - Address management 
-- `/api/documents` - Document management
-
-## License
-MIT

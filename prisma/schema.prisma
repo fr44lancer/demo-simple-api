@@ -1,0 +1,48 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/app/generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model person {
+  id              Int        @id @default(autoincrement())
+  psn             String
+  ssn             String
+  isDead          Boolean    @default(false)
+  death_date      DateTime
+  first_name      String
+  last_name       String
+  patronymic_name String
+  birth_date      DateTime
+  genus           String
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @default(now())
+  address         address?   @relation(fields: [addressId], references: [id])
+  documents       document[] @relation("PersonDocuments")
+  addressId       Int?
+}
+
+model address {
+  id           Int      @id @default(autoincrement())
+  region       String
+  street       String
+  building     String
+  apartment    String
+  community    String
+  postal_Index String
+  person       person[]
+}
+
+model document {
+  id                  Int    @id @default(autoincrement())
+  document_type       String
+  document_number     String
+  document_status     String
+  document_department String
+  personId            Int
+  person              person @relation("PersonDocuments", fields: [personId], references: [id])
+}
