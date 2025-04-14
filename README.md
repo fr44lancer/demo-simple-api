@@ -1,6 +1,7 @@
 # Public Registry API producer/consumer Demo App
 
-A  demo app for simulating a public registry platform using  mock data. Features include producing and consuming REST APIs for persons, addresses, and 
+A  demo app for simulating a public registry platform using  mock data. Features include producing and consuming 
+REST APIs for persons, addresses, and  documents
 
 ## 🚀 Quick Start
 ---
@@ -15,11 +16,16 @@ npm (comes with Node.js)
 MySQL 8.x (or compatible) – https://www.mysql.com
 
 You will also need to configure a local database and connection string.
+
 ---
 ### 1. Clone & Install
 ```bash
 git clone https://github.com/fr44lancer/demo-simple-api.git
+```
+```bash
 cd demo-simple-api
+```
+```bash
 npm install
 ```
 
@@ -85,6 +91,7 @@ Returns list of all addresses.
 ```bash
 npm run dev          # Start dev server
 npm run build        # Build for production
+npm run start        # Start for production
 npx prisma studio    # View/edit DB in browser
 ```
 
