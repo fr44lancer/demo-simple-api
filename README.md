@@ -26,12 +26,12 @@ npm install
 ### 2. Environment Setup
 Copy example env and configure your MySQL DB:
 ```bash
-cp .env.example .env.local
+cp .env.example .env
 ```
 
-Update `.env.local`:
+Update `.env`:
 ```
-DATABASE_URL="mysql://user:pass@localhost:3306/dbname"
+DATABASE_URL="mysql://user:pass@localhost:port/dbname"
 ```
 
 ### 3. App setup (migrations etc.)
@@ -43,9 +43,6 @@ npm run setup
 ```bash
 npm run dev
 ```
-
-### 5. Generate Mock Data (Optional)
-Use the **Generate Mock Data** button in the UI to populate test records.
 
 ---
 
@@ -59,7 +56,7 @@ Use the **Generate Mock Data** button in the UI to populate test records.
 │   ├── api
 │   │   ├── person        # REST API routes
 │   │   ├── v1            # Public-facing endpoints
-│   │   └── dev/generate-mock-data
+│   │   └── generate
 │   └── layout.tsx       # Root layout with Sidebar
 ├── components            # Reusable UI elements
 ├── lib                   # Prisma client wrapper
@@ -75,8 +72,8 @@ Use the **Generate Mock Data** button in the UI to populate test records.
 ### `/api/v1/persons`
 Returns full person list with address + documents.
 
-### `/api/v1/persons-by-pnum?pnum=xxxx`
-Query people by PNUM.
+### `/api/v1/get-persons-by-psn?psn=xxxx`
+Query people by PSN.
 
 ### `/api/v1/addresses`
 Returns list of all addresses.

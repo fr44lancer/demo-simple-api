@@ -1,6 +1,6 @@
 'use client';
 import {Layout, Menu} from 'antd';
-import {FileTextOutlined, HomeOutlined, UserOutlined,} from '@ant-design/icons';
+import {AccountBookOutlined, HomeOutlined,} from '@ant-design/icons';
 import Link from 'next/link';
 import {usePathname} from 'next/navigation';
 import Loading from "@/app/loading";
@@ -15,30 +15,20 @@ const menuItems = [
         label: <Link href="/">Home</Link>,
     },
     {
-        key: '/person',
-        icon: <UserOutlined/>,
-        label: <Link href="/producer/person">Persons</Link>,
-    },
-    {
-        key: '/address',
-        icon: <HomeOutlined/>,
-        label: <Link href="/producer/address">Addresses</Link>,
-    },
-    {
-        key: '/document',
-        icon: <FileTextOutlined/>,
-        label: <Link href="/producer/document">Documents</Link>,
+        key: '/consumer',
+        icon: <AccountBookOutlined/>,
+        label: <Link href="/consumer">Consumer</Link>,
     },
 ];
 
-export default function ProducerSidebarLayout({children}: { children: React.ReactNode }) {
+export default function ConsumerSidebarLayout({children}: { children: React.ReactNode }) {
     const pathname = usePathname();
 
     return (
         <Layout style={{minHeight: '100vh'}}>
             <Sider collapsible>
                 <div className="text-white text-center text-lg font-semibold my-4">
-                    Demo API Producer
+                    Demo API Consumer
                 </div>
                 <Menu
                     theme="dark"

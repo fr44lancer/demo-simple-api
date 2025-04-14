@@ -1,12 +1,11 @@
 // app/page.tsx
 'use client';
 
-import {Card, Typography, Button, Row, Col} from 'antd';
+import {Button, Card, Col, Row, Typography} from 'antd';
 import Link from 'next/link';
+import HowToUse from "@/components/pages/Home/HowToUse";
 
-import { Tabs,  } from 'antd';
-
-const { Title, Paragraph } = Typography;
+const {Title, Paragraph} = Typography;
 
 const items = [
     {
@@ -68,7 +67,8 @@ const items = [
                     <pre className="bg-gray-100 p-3 rounded text-sm mt-2 whitespace-pre-wrap">
                             brew install node
                             </pre>
-                    If you don’t have Homebrew, install it from <a className="underline" href="https://brew.sh" target="_blank">https://brew.sh</a>
+                    If you don’t have Homebrew, install it from <a className="underline" href="https://brew.sh"
+                                                                   target="_blank">https://brew.sh</a>
                 </Paragraph>
 
                 <Paragraph>
@@ -80,6 +80,7 @@ const items = [
                 </Paragraph>
 
                 <Paragraph>
+
                     <strong>3. Install dependencies:</strong>
                     <pre className="bg-gray-100 p-3 rounded text-sm">npm install</pre>
                 </Paragraph>
@@ -113,8 +114,9 @@ const items = [
         children: (
             <>
                 <Paragraph>
-                    <strong>1. Install Node.js:</strong><br />
-                    Download from <a href="https://nodejs.org" target="_blank" className="underline">https://nodejs.org</a> and run the installer.
+                    <strong>1. Install Node.js:</strong><br/>
+                    Download from <a href="https://nodejs.org" target="_blank"
+                                     className="underline">https://nodejs.org</a> and run the installer.
                 </Paragraph>
 
                 <Paragraph>
@@ -147,7 +149,7 @@ const items = [
                 </Paragraph>
 
                 <Paragraph>
-                    <strong>7. (Optional) Generate mock data:</strong><br />
+                    <strong>7. (Optional) Generate mock data:</strong><br/>
                     Click the <code>Generate Mock Data</code> button to simulate data.
                 </Paragraph>
             </>
@@ -161,42 +163,36 @@ export default function HomePage() {
 
                 {/* Section: Hero */}
                 <div className="text-center">
-                    <Title level={2}>Welcome to the Armenian Public Registry API Demo</Title>
+                    <Title level={2}>Welcome to the Public Registry API producer/consumer Demo</Title>
                     <Paragraph className="text-gray-600">
-                        This platform allows you to simulate producing and consuming registry APIs with mock Armenian citizen and address data.
+                        This platform allows you to simulate producing and consuming registry APIs with mock Armenian
+                        citizen and address data.
                     </Paragraph>
                 </div>
 
                 {/* Section: Cards */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <Card title="📡 API Producer" bordered className="shadow-md">
+                    <Card title="📡 API Producer" className="shadow-md">
                         <p>Create mock people, addresses, and documents to simulate registry APIs.</p>
                         <Link href="/producer">
                             <Button type="primary" className="mt-4">Browse producer app</Button>
                         </Link>
                     </Card>
 
-                    <Card title="🧑‍💻 API Consumer" bordered className="shadow-md">
+                    <Card title="🧑‍💻 API Consumer" className="shadow-md">
                         <p>Test the v1 API endpoints and consume registry data programmatically.</p>
-                        <Link href="/api/v1/persons">
-                            <Button className="mt-4">View Raw API</Button>
+                        <Link href="/consumer">
+                            <Button type="primary" className="mt-4">Browse consumer app</Button>
                         </Link>
                     </Card>
                 </div>
 
-                {/* Section: Docs */}
                 <Row>
                     <Col xs={24}>
 
-                        <div className="mt-10">
-                        <Title level={3}>📦 How to Install & Run the App</Title>
-                    <Paragraph className="text-gray-600">
-                        Follow the guide for your operating system to set up Node.js, install dependencies, configure your database, and run the app locally.
-                    </Paragraph>
-                    <Tabs defaultActiveKey="ubuntu" items={items} className="bg-white p-4 rounded border" />
-            </div>
+                        <HowToUse/>
 
-        </Col>
+                    </Col>
 
                 </Row>
 
