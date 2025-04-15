@@ -4,6 +4,7 @@
 import {useState} from 'react';
 import {Alert, Button, Input, Tabs, Typography} from 'antd';
 import DownloadSpecButton from "@/components/pages/Consumer/DownloadSpecButton";
+import InternalApi from "@/utils/InternalApi";
 
 const {TextArea} = Input;
 const {Title, Paragraph} = Typography;
@@ -60,8 +61,10 @@ export default function ApiConsumerPanel() {
         setLoading(true);
         setError(null);
         try {
-            const res = await fetch(url);
-            const data = await res.json();
+            const res = await InternalApi.get(url);
+            const data = res.data;
+            console.log('data')
+            console.log(data)
             setResult(data);
         } catch (err) {
             setError('Failed to fetch API');

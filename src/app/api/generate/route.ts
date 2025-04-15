@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import {NextRequest, NextResponse} from 'next/server';
 import prisma from "@/lib/prisma";
 
 const firstNames = ['Արամ', 'Աննա', 'Գագիկ', 'Լուսինե', 'Վահե', 'Նարինե'];
@@ -20,7 +20,7 @@ function randStr(len: number) {
 }
 
 export async function POST(req: NextRequest) {
-    const { persons = 10, addresses = 5 } = await req.json();
+    const { persons = 10, addresses = 5, documents = 10 } = await req.json();
 
     try {
         // 1. Create addresses
@@ -56,10 +56,9 @@ export async function POST(req: NextRequest) {
                 },
             });
 
-            const docsToCreate = Math.random() > 0.5 ? 2 : 1;
 
             await Promise.all(
-                Array.from({ length: docsToCreate }).map(() =>
+                Array.from({ length: documents }).map(() =>
                     prisma.document.create({
                         data: {
                             personId: person.id,

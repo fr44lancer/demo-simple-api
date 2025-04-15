@@ -5,6 +5,12 @@
     "version": "1.0.0",
     "description": "RESTful API for accessing Armenian public registry data including persons, addresses, and documents."
   },
+  "servers": [
+    {
+      "url": "${PUBLIC_REGISTRY_API_BASE_URL}",
+      "description": "Base URL for Armenian Public Registry API"
+    }
+  ],
   "paths": {
     "/api/v1/persons": {
       "get": {

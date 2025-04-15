@@ -37,7 +37,10 @@ cp .env.example .env
 
 Update `.env`:
 ```
-DATABASE_URL="mysql://user:pass@localhost:port/dbname"
+DATABASE_URL="mysql://user:pass@localhost:port/dbname" //DB connection string
+PRODUCER_API_BASE=  //where API is exposed to others (acts as producer)
+CONSUMER_API_BASE= //external API consume (acts as consumer)
+NEXT_PUBLIC_X_ROAD_CLIENT_HEADER_VALUE=  //custom header as X-ROAD-CLIENT
 ```
 
 ### 3. App setup (migrations etc.)
@@ -47,7 +50,7 @@ npm run setup
 
 ### 4. Start the Dev Server
 ```bash
-npm run dev
+npm run dev -p 3000
 ```
 
 ---
@@ -91,7 +94,7 @@ Returns list of all addresses.
 ```bash
 npm run dev          # Start dev server
 npm run build        # Build for production
-npm run start        # Start for production
+ npx next start -p 3000        # Start for production
 npx prisma studio    # View/edit DB in browser
 ```
 
